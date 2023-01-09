@@ -22,7 +22,7 @@ const container = React.createElement(
     {
         id: 'container'
     },
-    ['heading1', 'heading2']
+    [heading1, heading2]
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
