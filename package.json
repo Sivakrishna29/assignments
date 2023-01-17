@@ -4,7 +4,7 @@
   "description": "This is assignment2",
   "scripts": {
     "test": "jest",
-    "start": "parcel assignment3/index.html",
+    "start": "parcel assignment4/index.html",
     "build": "parcel build assignment2/index.html"
   },
   "repository": {
