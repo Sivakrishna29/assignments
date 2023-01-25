@@ -1,6 +1,7 @@
 import RestaurantCard from './RestaurantCard';
 import { restaurantList } from './Constants';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Shimmar from './Shimmar';
 
@@ -33,9 +34,9 @@ const Body = () => {
     // not render component
     if(!allRestaurants) return null;
 
-    if(filteredRestaurants?.length === 0) {
-      return <h1>No Restraunt match your Filter!!</h1>
-    }
+    // if(filteredRestaurants?.length === 0) {
+    //   return <h1>No Restraunt match your Filter!!</h1>
+    // }
 
     return allRestaurants?.length === 0 ? (
       <Shimmar />
@@ -63,7 +64,14 @@ const Body = () => {
             </div>
             <div className='restaurant-list'>
                 {filteredRestaurants.map((restaurant) => {
-                    return <RestaurantCard {...restaurant.data} key={restaurant.data.id}/>
+                    return (
+                      <Link
+                        to={"/restaurant/" + restaurant.data.id}
+                        key={restaurant.data.id}
+                      >
+                        <RestaurantCard {...restaurant.data}/>
+                      </Link>
+                    )
                 })}
             </div>
         </>

@@ -34,3 +34,14 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.shimmar-card {
+    width: 258px;
+    height: 258px;
+    background: lightgray;
+    margin: 20px;
+}
+
+.menu {
+    display: flex;
+}
