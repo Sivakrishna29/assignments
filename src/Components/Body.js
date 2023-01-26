@@ -1,35 +1,21 @@
 import RestaurantCard from './RestaurantCard';
-import { restaurantList } from './Constants';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Shimmar from './Shimmar';
-
-function filterData(searchText, restaurants) {
-    const filterData = restaurants.filter((restaurant) =>
-      restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-    );
-
-    return filterData;
-}
+import { filterData } from '../Utils/helper';
+import useRestaurantsList from '../Utils/useRestaurantsList';
+import useOnline from "../Utils/useOnline";
 
 const Body = () => {
-    const [allRestaurants, setAllRestaurants] = useState([]);
-    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState();
+    const [allRestaurants, filteredRestaurants] = useRestaurantsList();
 
-    useEffect(() => {
-      getRestaurants()
-    },[])
-
-    async function getRestaurants() {
-        const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671&page_type=DESKTOP_WEB_LISTING"
-            );
-        const json = await data.json();
-        setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    }
+    const isOneline = useOnline();
+    
+    if(!isOneline){
+        return <h1>offline, please check your internet connection!!</h1>
+    };
 
     // not render component
     if(!allRestaurants) return null;
