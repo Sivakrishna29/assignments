@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 import { CDN_CARD_URL } from "./Constants";
 import Shimmer from "./Shimmar";
-import useRestaurant from '../Utils/useRestaurant';
+import useRestaurant from "../Utils/useRestaurant";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
