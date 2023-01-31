@@ -31,11 +31,18 @@ class Profile extends React.Component {
   render() {
     console.log("Inside - child Render");
     return (
-      <div>
-        <img src={this.state.userInfo.avatar_url} />
-        <h2>Name: {this.state.userInfo.id}</h2>
-        <h3>Age: {this.state.userInfo.login}</h3>
-        <h4>Age: {this.state.userInfo.type}</h4>
+      <div className="ml-3">
+        <img
+          src={this.state.userInfo.avatar_url}
+          className="w-52 h-52 border border-sky-300"
+        />
+        <h2 className="pt-3 font-bold text-1xl">
+          Name: {this.state.userInfo.id}
+        </h2>
+        <h3 className="font-bold text-1xl">Age: {this.state.userInfo.login}</h3>
+        <h4 className="pb-3 font-bold text-1xl">
+          Age: {this.state.userInfo.type}
+        </h4>
       </div>
     );
   }
