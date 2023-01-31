@@ -28,15 +28,15 @@ const Body = () => {
     <Shimmar />
   ) : (
     <>
-      <div className="search-container">
+      <div className="pb-4 bg-red-100">
         <input
           type="text"
-          className="inut-search"
+          className="border border-rose-300 ml-3"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
-          className="search-btn"
+          className="border border-rose-300 rounded-none w-24 h-7 ml-3"
           onClick={() => {
             //need to filter the data
             const data = filterData(searchText, allRestaurants);
@@ -47,7 +47,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
