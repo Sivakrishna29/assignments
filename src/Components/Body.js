@@ -7,7 +7,7 @@ import { filterData } from "../Utils/helper";
 import useRestaurantsList from "../Utils/useRestaurantsList";
 import useOnline from "../Utils/useOnline";
 
-const Body = () => {
+const Body = ({ user }) => {
   const [searchText, setSearchText] = useState();
   const [allRestaurants, filteredRestaurants] = useRestaurantsList();
 
@@ -54,7 +54,7 @@ const Body = () => {
               to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
             >
-              <RestaurantCard {...restaurant.data} />
+              <RestaurantCard {...restaurant.data} user={user.userInfo} />
             </Link>
           );
         })}
