@@ -5,23 +5,37 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
 import Footer from "./Components/Footer";
+import { useState } from "react";
+
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import RestaurantMenu from "./Components/RestaurantMenu";
 import Error from "./Components/Error";
 import Profile from "./Components/ProfileClassBased";
 import Shimmar from "./Components/Shimmar";
+import UserContext from "./Utils/UserContext";
 //import Instamart from './Components/Instamart';
 
 const Instamart = lazy(() => import("./Components/Instamart"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    userInfo: {
+      name: "sivakrishna",
+      email: "siva@gmail.com",
+    },
+  });
+
+  const [profile, setProfile] = useState({
+    name: "Krishna",
+    email: "Sivakrishna.ui@gmail.com",
+  });
   return (
-    <React.Fragment>
+    <UserContext.Provider value={{ profile: profile, setProfile: setProfile }}>
       <Header />
       <Outlet />
       <Footer />
-    </React.Fragment>
+    </UserContext.Provider>
   );
 };
 
@@ -33,7 +47,16 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: (
+          <Body
+            user={{
+              userInfo: {
+                name: "sivakrishna",
+                email: "siva@gmail.com",
+              },
+            }}
+          />
+        ),
       },
       {
         path: "/about",
