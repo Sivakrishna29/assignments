@@ -1,13 +1,10 @@
+import { useContext } from "react";
+import UserContext from "../Utils/UserContext";
 import { CDN_CARD_URL } from "./Constants";
 
-const RestaurantCard = ({
-  name,
-  cloudinaryImageId,
-  cuisines,
-  slaString,
-  user,
-}) => {
+const RestaurantCard = ({ name, cloudinaryImageId, cuisines, slaString }) => {
   // const { restaurant } = props;
+  const { profile } = useContext(UserContext);
   return (
     <div className="w-64 p-3 m-3 border border-sky-300">
       <img alt="card" src={CDN_CARD_URL + cloudinaryImageId} />
@@ -21,7 +18,7 @@ const RestaurantCard = ({
         {slaString}
       </h4>
       <span className="font-medium text-1xl">
-        {user.name} - {user.email}
+        {profile.name} - {profile.email}
       </span>
     </div>
   );

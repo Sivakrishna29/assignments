@@ -13,6 +13,7 @@ import RestaurantMenu from "./Components/RestaurantMenu";
 import Error from "./Components/Error";
 import Profile from "./Components/ProfileClassBased";
 import Shimmar from "./Components/Shimmar";
+import UserContext from "./Utils/UserContext";
 //import Instamart from './Components/Instamart';
 
 const Instamart = lazy(() => import("./Components/Instamart"));
@@ -24,12 +25,17 @@ const AppLayout = () => {
       email: "siva@gmail.com",
     },
   });
+
+  const [profile, setProfile] = useState({
+    name: "Krishna",
+    email: "Sivakrishna.ui@gmail.com",
+  });
   return (
-    <React.Fragment>
+    <UserContext.Provider value={{ profile: profile, setProfile: setProfile }}>
       <Header />
       <Outlet />
       <Footer />
-    </React.Fragment>
+    </UserContext.Provider>
   );
 };
 
